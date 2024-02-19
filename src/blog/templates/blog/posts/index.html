@@ -1,0 +1,162 @@
+{% extends "base.html" %} 
+
+{% load static %} 
+{% load blogTags %} 
+
+{% block title%}Home{% endblock %} 
+
+{% block asserts %}
+<!-- Custom styles for this template -->
+<link
+    href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap"
+    rel="stylesheet"
+/>
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="{% static 'blog/css/app.css' %}" />
+
+{% endblock %} 
+
+{% block content %} 
+
+{% include 'includes/svg.html' %}
+{% toggleTheme %}
+
+{% include 'includes/defaultLayout.html' %}
+
+<div class="my-2 p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+    <div class="col-lg-8 px-0">
+        <h1 class="display-4 fst-italic">Welcome back to the blog</h1>
+
+        <div class="d-flex flex-column my-3">
+            <i class="fa fa-quote-left-alt fa-2x text-purple"></i>
+            <div>
+                <cite class="lead ms-4">
+                    <span class="citations"> </span>
+                </cite>
+                <p class="text-body-secondary fst-italic">- Aure</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-7 col-md-7">
+        <form
+            method="POST"
+            class="d-flex align-items-center justify-content-center"
+        >
+            {% csrf_token %}
+            <div class="input-group">
+                <input
+                    class="form-control"
+                    type="search"
+                    name="search"
+                    id="search"
+                    value="{{ searchValue }}"
+                    placeholder="Search"
+                />
+                <button class="btn btn-purple" aria-label="Search">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        class="mx-1"
+                        role="img"
+                        viewBox="0 0 24 24"
+                    >
+                        <title>Search</title>
+                        <circle cx="10.5" cy="10.5" r="7.5" />
+                        <path d="M21 21l-5.2-5.2" />
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row g-5">
+    <div class="col-md-8">
+        <div class="px-1 mb-4 border-bottom nav-scroller">
+            <ul
+                class="nav justify-content-between align-items-center fadeInUp wow"
+                data-toggle="selected"
+            >
+                <li class="nav-item">
+                    <a
+                        class="text-capitalize text-body-emphasis mx-2 filter nav-link {% if not filterActive %} selected {% endif %}"
+                        href="{% url 'blog:index' %}"
+                        >all</a
+                    >
+                </li>
+
+                {% for category in categories %}
+
+                <li class="nav-item">
+                    <a
+                        class="text-capitalize text-body-emphasis mx-2 filter nav-link {% if filterActive == category.id %} selected {% endif %}"
+                        href="{% url 'blog:PostsByCategory' category.id %}"
+                        >{{ category.name }}</a
+                    >
+                </li>
+
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="row">
+          
+          {% for post in posts %}
+          <div class="col-12 mb-2">
+            {% post post post_tag %}
+          </div>
+          
+          {% empty %}
+          <div class="alert alert-info">
+            <h4 class="text-center"> Aucun Post <span class="fa fa-sad"></span></h4>
+          </div>
+          
+          {% endfor %}
+          
+        </div>
+
+        <div class="pagination blog-pagination" aria-label="Pagination">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                <a
+                    class="btn btn-outline-purple rounded-pill px-3"
+                    href="?page={{ posts.previous_page_number }}"
+                    ><span class="fa fa-chevron-left"></span
+                ></a>
+                {% endif %}
+
+                <span class="current btn btn-purple rounded-pill">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span>
+
+                {% if posts.has_next %}
+                <a
+                    class="btn btn-outline-purple rounded-pill px-3"
+                    href="?page={{ posts.next_page_number }}"
+                    ><span class="fa fa-chevron-right"></span
+                ></a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+
+    {% asideLayout popularPosts %}
+</div>
+
+{% include 'includes/enddefaultLayout.html' %} 
+
+{% endblock %} 
+
+{% block script %}
+
+<script src="{% static 'blog/js/typed.js' %}"></script>
+<script src="{% static 'blog/js/app.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% load blogTags %} 
+{% block title%}Account{% endblock %} 
+{% block asserts %}
+
+<!-- Custom styles for this template -->
+<link
+  href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap"
+  rel="stylesheet"
+/>
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="{% static 'blog/css/app.css' %}" />
+
+{% endblock %} 
+{% block content %} 
+{% include 'includes/svg.html' %}
+{%toggleTheme %}
+
+<div class="container">
+  <header class="border-bottom lh-1 py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+      <div class="col-5">
+        <a
+          class="blog-header-logo text-decoration-none text-purple"
+          href="{% url 'blog:index' %}"
+          >.the blog</a
+        >
+      </div>
+      <div class="col-6 d-flex justify-content-end align-items-center">
+        <a
+          class="btn btn-purple text-capitalize"
+          href=" {% url  'account:logout' %}"
+          >Deconnexion
+          <span class="fa fa-log-out"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="container py-2">
+    <div class="text-end">
+      <a class="btn btn-sm btn-purple" href="{% url 'account:edit' %}">Edit Profil</a>
+    </div>
+
+    <div class="row">
+      <h2>{{ user.first_name }}</h2>
+      <h2>{{ user.last_name }}</h2>
+    </div>
+
+    {% if user.is_staff %}
+
+    <div>
+      <div class="d-flex  align-items-center justify-content-between">
+<h4 class="fst-italic fadeInUp wow mt-1">Our posts</h4>
+<a href="{% url 'blog:create-post' %}" class="btn btn-purple btn-sm">New Post</a>
+      </div>
+      
+      <ul class="list-unstyled">
+        {% for post in our_posts %}
+        <li class="zoomInUp wow">
+          <a
+            class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+            href="{% url 'blog:show' post.id %}"
+          >
+            {% if post.thumbnail %}
+
+            <div class="col-auto d-none d-lg-block">
+              <img
+                class="bd-placeholder-img"
+                width="100"
+                height="150"
+                src="{{ post.thumbnail }}"
+                alt="post-image"
+              />
+            </div>
+
+            {% else %}
+            <svg
+              class="bd-placeholder-img"
+              width="200"
+              height="250"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: Thumbnail"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#55595c" />
+              <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+            </svg>
+            {% endif %}
+
+            <div class="col-lg-8">
+              <h6 class="mb-0">{{ post.title }}</h6>
+              <small class="text-body-secondary">
+                <span class="fa fa-calendar-days me-1"></span>
+                {{ post.updated_at }}
+              </small>
+            </div>
+          </a>
+        </li>
+
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </main>
+</div>
+<footer class="py-3 text-center text-body-secondary bg-body-tertiary mt-2">
+  <p class="fadeInDown wow d-flex align-items-center justify-content-center">
+    <span class="fa fa-copyright"></span> 2023 -
+    <a class="text-purple text-decoration-none fw-bold" href="/">.the coder</a>
+    from
+    <a class="text-purple text-decoration-none" href="https://twitter.com/mdo"
+      >FenixAD</a
+    >.
+  </p>
+</footer>
+
+{% endblock %} 
+
+{% block script %}
+
+<script src="{% static 'blog/js/app.js' %}"></script>
+
+{% endblock %}

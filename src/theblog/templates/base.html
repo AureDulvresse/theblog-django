@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+<html lang="fr" data-bs-theme="auto">
+<head>
+  <script src="{% static 'vendor/js/color-modes.js' %}"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="the blog, un Blog qui vous donne la parole et le stylo bien sur">
+  <meta name="author" content="Aure Dulvresse from FenixAD">
+
+  <title>the blog | {% block title %}{% endblock %}</title>
+    
+  <link rel="stylesheet" href={% static 'vendor/css/bootstrap.min.css' %} />
+  <link rel="stylesheet" href={% static 'vendor/css/all.min.css' %} />
+  <link rel="stylesheet" href={% static 'vendor/css/brands.min.css' %} />
+  <link rel="stylesheet" href={% static 'vendor/css/animate.css' %} />
+  
+  {% block asserts %}{% endblock %}
+  
+</head>
+<body>
+
+{% block content %}{% endblock %}
+  
+  <script src="{% static 'vendor/js/jQuery.js' %}"></script>
+  <script src="{% static 'vendor/js/jQuery-ajax.js' %}"></script>
+  <script src="{% static 'vendor/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/js/wow.min.js' %}"></script>
+  
+  {% block script %}{% endblock %}
+  
+</body>
+</html>

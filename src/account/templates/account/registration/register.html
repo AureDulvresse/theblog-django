@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block asserts %}
+<!-- Custom styles for this template -->
+<link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="{% static 'blog/css/app.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex align-items-center justify-content-center w-100 vh-100">
+	
+	<form 
+	      class="rounded shadow p-4"
+	      method="post" 
+	      accept-charset="utf-8"
+	      action="{% url 'account:register' %}" 
+	>
+		
+		{% csrf_token %}
+		
+		<h2 class="text-purple fw-bold text-center mb-3"><a class="text-decoration-none text-purple" href="{% url 'blog:index' %} ">the blog </a>- Inscription</h2>
+		
+		{% for message in messages %}
+		<div class="alert alert-danger mb-1">
+		  <p class="text-center">{{ message }}</p>
+		</div>
+		{% endfor %}
+		
+		<div class="row mb-3">
+		  <div class="col-12 col-md-6">
+			<label for="first_name" class="text-capitalize text-body-emphasis">Prenom</label>
+			<div class="input-group">
+				<i class="btn btn-purple px-2  d-flex align-items-center justify-content-center icon-form fa fa-user"></i>
+				<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Votre prenom" />
+			</div>
+
+		</div>
+		<div class="col-12 col-md-6">
+			<label for="last_name" class="text-capitalize text-body-emphasis">Nom</label>
+			<div class="input-group">
+				<i class="btn btn-purple px-2  d-flex align-items-center justify-content-center icon-form fa fa-user"></i>
+				<input type="text" name="last_name" id="last_name" class="form-control" placeholder="Votre nom" />
+			</div>
+
+		</div>
+		</div>
+		
+		<div class="mb-3">
+			<label for="identifiant" class="text-capitalize text-body-emphasis">email</label>
+			<div class="input-group">
+				<i class="btn btn-purple px-2  d-flex align-items-center justify-content-center icon-form fa fa-at"></i>
+				<input type="mail" name="identifiant" id="identifiant" class="form-control" placeholder="Votre email" />
+			</div>
+
+		</div>
+		
+		<div class="mb-3">
+			<label for="password" class="text-capitalize text-body-emphasis">password</label>
+			<div class="input-group">
+				<i class="btn btn-purple px-2  d-flex align-items-center justify-content-center icon-form fa fa-lock"></i>
+				<input type="password" name="password" id="password" class="form-control" placeholder="Votre mot de passe" />
+			</div>
+
+		</div>
+		
+		<div class="mb-3">
+			<button type="submit" class="btn btn-purple w-100">Inscription</button>
+			<p class="text-center">
+			  <a href="{% url 'account:register' %}">Je n'ai pas de compte. M'inscrire !</a>
+			</p>
+		</div>
+
+	</form>
+	
+</div>
+
+{% endblock %}
