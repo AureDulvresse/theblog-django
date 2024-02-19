@@ -2,7 +2,7 @@
 
 ---
 
-Blog website with django framework
+Blog website with django framework  
 
 ## Models
 
