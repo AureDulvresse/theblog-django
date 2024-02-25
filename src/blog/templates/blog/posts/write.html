@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% load static %} {% load blogTags %} 
+{% block title%}Write Post{% endblock %} 
+{% block asserts %}
+<!-- Custom styles for this template -->
+<link
+  href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap"
+  rel="stylesheet"
+/>
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="{% static 'blog/css/app.css' %}" />
+
+{% endblock %} {% block content %} 
+{% include 'includes/svg.html' %} 
+{% toggleTheme %}
+
+{% include 'includes/defaultLayout.html' %}
+
+<div class="w-100">
+  <h2 class="text-purple">Ecriture d'un nouvelle article</h2>
+
+  <div>
+    <form action="{% url 'blog:publish-post' user.id %}" method="post" class="d-flex align-items-center flex-column">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-purple btn-sm">Créer et Publier</button>
+
+    </form>
+    
+
+</div>
+</div>
+
+{% include 'includes/enddefaultLayout.html' %} 
+
+{% endblock %} 
+
+{% block script %}
+
+<script src="{% static 'blog/js/typed.js' %}"></script>
+<script src="{% static 'blog/js/app.js' %}"></script>
+
+{% endblock %}

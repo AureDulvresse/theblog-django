@@ -6,6 +6,9 @@ class Category(models.Model):
   name = models.CharField(max_length = 50)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
+
+  class Meta:
+     verbose_name = "Categorie"
   
   def ___str__(self):
     return self.name
@@ -35,6 +38,12 @@ class Post(models.Model):
 
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
+
+  class Meta:
+     verbose_name = "Article"
+
+  def ___str__(self):
+    return self.title
     
 
 class Comment(models.Model):
@@ -44,6 +53,9 @@ class Comment(models.Model):
   post = models.ForeignKey(Post, on_delete = models.CASCADE)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
+
+  class Meta:
+     verbose_name = "Commentaire"
   
   def ___str__(self):
     return self.content
@@ -51,6 +63,9 @@ class Comment(models.Model):
 class PostUserLikes(models.Model):
   user = models.ForeignKey(User, on_delete = models.CASCADE)   
   post = models.ForeignKey(Post, on_delete = models.CASCADE)
+
+  class Meta:
+     verbose_name = "Like"
   
 class PostTag(models.Model):
 	post = models.ForeignKey(Post, on_delete= models.CASCADE)

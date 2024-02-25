@@ -23,5 +23,5 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('account/', include('account.urls')),
     path('database/<int:option>/seed/', seeders.seed_with_option),
-  path('database/seed/', seeders.seed)
+    path('database/seed/', seeders.seed),
 ]

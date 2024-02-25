@@ -51,8 +51,15 @@
 
     <div>
       <div class="d-flex  align-items-center justify-content-between">
-<h4 class="fst-italic fadeInUp wow mt-1">Our posts</h4>
-<a href="{% url 'blog:create-post' %}" class="btn btn-purple btn-sm">New Post</a>
+      
+        <!-- {% if status == 200 %}
+          <div class="alert alert-success">
+            <h4>Post Publier</h4>
+          </div>
+        {% endif %} -->
+
+      <h4 class="fst-italic fadeInUp wow mt-1">Our posts</h4>
+      <a href="{% url 'blog:create-post' %}" class="btn btn-purple btn-sm">New Post</a>
       </div>
       
       <ul class="list-unstyled">

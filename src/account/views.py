@@ -61,8 +61,7 @@ class Registration:
 		
 @login_required
 def index(request):
-
-	our_posts = Post.objects.all().filter(writed_by = 4)
+	our_posts = Post.objects.all().filter(writed_by = request.user).order_by('-updated_at')
 
 	context = {
 		"our_posts": our_posts,
