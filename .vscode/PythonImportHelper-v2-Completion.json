@@ -40,11 +40,44 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "detail": "django.contrib",
         "documentation": {}
     },
     {
@@ -386,19 +419,11 @@
         "documentation": {}
     },
     {
-        "label": "Paginator",
-        "importPath": "django.core.paginator",
-        "description": "django.core.paginator",
+        "label": "User",
+        "importPath": "account.models",
+        "description": "account.models",
         "isExtraImport": true,
-        "detail": "django.core.paginator",
-        "documentation": {}
-    },
-    {
-        "label": "get_asgi_application",
-        "importPath": "django.core.asgi",
-        "description": "django.core.asgi",
-        "isExtraImport": true,
-        "detail": "django.core.asgi",
+        "detail": "account.models",
         "documentation": {}
     },
     {
@@ -410,11 +435,27 @@
         "documentation": {}
     },
     {
-        "label": "Faker",
-        "importPath": "faker",
-        "description": "faker",
+        "label": "HttpResponseRedirect",
+        "importPath": "django.http",
+        "description": "django.http",
         "isExtraImport": true,
-        "detail": "faker",
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "HttpResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "Paginator",
+        "importPath": "django.core.paginator",
+        "description": "django.core.paginator",
+        "isExtraImport": true,
+        "detail": "django.core.paginator",
         "documentation": {}
     },
     {
@@ -423,6 +464,30 @@
         "description": "slugify",
         "isExtraImport": true,
         "detail": "slugify",
+        "documentation": {}
+    },
+    {
+        "label": "slugify",
+        "importPath": "slugify",
+        "description": "slugify",
+        "isExtraImport": true,
+        "detail": "slugify",
+        "documentation": {}
+    },
+    {
+        "label": "get_asgi_application",
+        "importPath": "django.core.asgi",
+        "description": "django.core.asgi",
+        "isExtraImport": true,
+        "detail": "django.core.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "Faker",
+        "importPath": "faker",
+        "description": "faker",
+        "isExtraImport": true,
+        "detail": "faker",
         "documentation": {}
     },
     {
@@ -499,7 +564,7 @@
         "kind": 5,
         "importPath": "src.account.urls",
         "description": "src.account.urls",
-        "peekOfCode": "app_name = 'account'\nurlpatterns = [\n  path('login', views.Registration.login_page, name=\"login\"),\n  path('logout', views.Registration.logout_page, name = \"logout\"),\n  path('register', views.Registration.register_page, name = \"register\"),\n  path('', views.index, name=\"index\"),\n  path('edit/', views.Registration.edit_page, name = \"edit\"),\n  path('users', views.allUsers),\n]",
+        "peekOfCode": "app_name = 'account'\nurlpatterns = [\n  path('login/', views.Registration.login_page, name=\"login\"),\n  path('logout/', views.Registration.logout_page, name = \"logout\"),\n  path('register/', views.Registration.register_page, name = \"register\"),\n  path('', views.index, name=\"index\"),\n  path('edit/', views.Registration.edit_page, name = \"edit\"),\n  path('users/', views.allUsers),\n]",
         "detail": "src.account.urls",
         "documentation": {}
     },
@@ -508,7 +573,7 @@
         "kind": 5,
         "importPath": "src.account.urls",
         "description": "src.account.urls",
-        "peekOfCode": "urlpatterns = [\n  path('login', views.Registration.login_page, name=\"login\"),\n  path('logout', views.Registration.logout_page, name = \"logout\"),\n  path('register', views.Registration.register_page, name = \"register\"),\n  path('', views.index, name=\"index\"),\n  path('edit/', views.Registration.edit_page, name = \"edit\"),\n  path('users', views.allUsers),\n]",
+        "peekOfCode": "urlpatterns = [\n  path('login/', views.Registration.login_page, name=\"login\"),\n  path('logout/', views.Registration.logout_page, name = \"logout\"),\n  path('register/', views.Registration.register_page, name = \"register\"),\n  path('', views.index, name=\"index\"),\n  path('edit/', views.Registration.edit_page, name = \"edit\"),\n  path('users/', views.allUsers),\n]",
         "detail": "src.account.urls",
         "documentation": {}
     },
@@ -526,7 +591,7 @@
         "kind": 2,
         "importPath": "src.account.views",
         "description": "src.account.views",
-        "peekOfCode": "def index(request):\n\tour_posts = Post.objects.all().filter(writed_by = 4)\n\tcontext = {\n\t\t\"our_posts\": our_posts,\n\t}\n\treturn render(request, \"account/account.html\", context=context)\ndef allUsers(request):\n  return render(request, 'account/users.html', {'users': User.objects.all()})",
+        "peekOfCode": "def index(request):\n\tour_posts = Post.objects.all().filter(writed_by = request.user).order_by('-updated_at')\n\tcontext = {\n\t\t\"our_posts\": our_posts,\n\t}\n\treturn render(request, \"account/account.html\", context=context)\ndef allUsers(request):\n  return render(request, 'account/users.html', {'users': User.objects.all()})",
         "detail": "src.account.views",
         "documentation": {}
     },
@@ -634,7 +699,7 @@
         "kind": 5,
         "importPath": "src.account.views",
         "description": "src.account.views",
-        "peekOfCode": "\t\t\trequest.POST = {}\n\t\t\treturn redirect(\"account:login\")\n\t\treturn render(request, \"account/registration/register.html\")\n\tdef edit_page(request):\n\t\tpass\n@login_required\ndef index(request):\n\tour_posts = Post.objects.all().filter(writed_by = 4)\n\tcontext = {\n\t\t\"our_posts\": our_posts,",
+        "peekOfCode": "\t\t\trequest.POST = {}\n\t\t\treturn redirect(\"account:login\")\n\t\treturn render(request, \"account/registration/register.html\")\n\tdef edit_page(request):\n\t\tpass\n@login_required\ndef index(request):\n\tour_posts = Post.objects.all().filter(writed_by = request.user).order_by('-updated_at')\n\tcontext = {\n\t\t\"our_posts\": our_posts,",
         "detail": "src.account.views",
         "documentation": {}
     },
@@ -643,7 +708,7 @@
         "kind": 5,
         "importPath": "src.account.views",
         "description": "src.account.views",
-        "peekOfCode": "\tour_posts = Post.objects.all().filter(writed_by = 4)\n\tcontext = {\n\t\t\"our_posts\": our_posts,\n\t}\n\treturn render(request, \"account/account.html\", context=context)\ndef allUsers(request):\n  return render(request, 'account/users.html', {'users': User.objects.all()})",
+        "peekOfCode": "\tour_posts = Post.objects.all().filter(writed_by = request.user).order_by('-updated_at')\n\tcontext = {\n\t\t\"our_posts\": our_posts,\n\t}\n\treturn render(request, \"account/account.html\", context=context)\ndef allUsers(request):\n  return render(request, 'account/users.html', {'users': User.objects.all()})",
         "detail": "src.account.views",
         "documentation": {}
     },
@@ -663,6 +728,33 @@
         "description": "src.blog.migrations.0001_initial",
         "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Category',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
         "detail": "src.blog.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "src.blog.migrations.0002_alter_comment_options_alter_post_options",
+        "description": "src.blog.migrations.0002_alter_comment_options_alter_post_options",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('blog', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterModelOptions(\n            name='comment',\n            options={'verbose_name': 'Commentaire'},\n        ),\n        migrations.AlterModelOptions(",
+        "detail": "src.blog.migrations.0002_alter_comment_options_alter_post_options",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "src.blog.migrations.0003_alter_category_options",
+        "description": "src.blog.migrations.0003_alter_category_options",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('blog', '0002_alter_comment_options_alter_post_options'),\n    ]\n    operations = [\n        migrations.AlterModelOptions(\n            name='category',\n            options={'verbose_name': 'Categorie'},\n        ),\n    ]",
+        "detail": "src.blog.migrations.0003_alter_category_options",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "src.blog.migrations.0004_alter_postuserlikes_options",
+        "description": "src.blog.migrations.0004_alter_postuserlikes_options",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('blog', '0003_alter_category_options'),\n    ]\n    operations = [\n        migrations.AlterModelOptions(\n            name='postuserlikes',\n            options={'verbose_name': 'Like'},\n        ),\n    ]",
+        "detail": "src.blog.migrations.0004_alter_postuserlikes_options",
         "documentation": {}
     },
     {
@@ -742,7 +834,16 @@
         "kind": 6,
         "importPath": "src.blog.forms",
         "description": "src.blog.forms",
-        "peekOfCode": "class CommentForm(ModelForm):\n\tclass Meta:\n\t\tmodel = Comment\n\t\tfields= ['comment']",
+        "peekOfCode": "class CommentForm(ModelForm):\n\tclass Meta:\n\t\tmodel = Comment\n\t\tfields= ['content']\nclass PostForm(ModelForm):\n\tclass Meta:\n\t\tmodel = Post\n\t\tfields = ['title', 'content', 'thumbnail', 'category']",
+        "detail": "src.blog.forms",
+        "documentation": {}
+    },
+    {
+        "label": "PostForm",
+        "kind": 6,
+        "importPath": "src.blog.forms",
+        "description": "src.blog.forms",
+        "peekOfCode": "class PostForm(ModelForm):\n\tclass Meta:\n\t\tmodel = Post\n\t\tfields = ['title', 'content', 'thumbnail', 'category']",
         "detail": "src.blog.forms",
         "documentation": {}
     },
@@ -751,7 +852,25 @@
         "kind": 5,
         "importPath": "src.blog.forms",
         "description": "src.blog.forms",
-        "peekOfCode": "\t\tmodel = Comment\n\t\tfields= ['comment']",
+        "peekOfCode": "\t\tmodel = Comment\n\t\tfields= ['content']\nclass PostForm(ModelForm):\n\tclass Meta:\n\t\tmodel = Post\n\t\tfields = ['title', 'content', 'thumbnail', 'category']",
+        "detail": "src.blog.forms",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tmodel",
+        "kind": 5,
+        "importPath": "src.blog.forms",
+        "description": "src.blog.forms",
+        "peekOfCode": "\t\tmodel = Post\n\t\tfields = ['title', 'content', 'thumbnail', 'category']",
+        "detail": "src.blog.forms",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tfields",
+        "kind": 5,
+        "importPath": "src.blog.forms",
+        "description": "src.blog.forms",
+        "peekOfCode": "\t\tfields = ['title', 'content', 'thumbnail', 'category']",
         "detail": "src.blog.forms",
         "documentation": {}
     },
@@ -760,7 +879,7 @@
         "kind": 6,
         "importPath": "src.blog.models",
         "description": "src.blog.models",
-        "peekOfCode": "class Category(models.Model):\n  name = models.CharField(max_length = 50)\n  created_at = models.DateTimeField(auto_now_add=True)\n  updated_at = models.DateTimeField(auto_now=True)\n  def ___str__(self):\n    return self.name\nclass Tag(models.Model):\n  name = models.CharField(max_length = 50)\n  created_at = models.DateTimeField(auto_now_add=True)\n  updated_at = models.DateTimeField(auto_now=True)",
+        "peekOfCode": "class Category(models.Model):\n  name = models.CharField(max_length = 50)\n  created_at = models.DateTimeField(auto_now_add=True)\n  updated_at = models.DateTimeField(auto_now=True)\n  class Meta:\n     verbose_name = \"Categorie\"\n  def ___str__(self):\n    return self.name\nclass Tag(models.Model):\n  name = models.CharField(max_length = 50)",
         "detail": "src.blog.models",
         "documentation": {}
     },
@@ -787,7 +906,7 @@
         "kind": 6,
         "importPath": "src.blog.models",
         "description": "src.blog.models",
-        "peekOfCode": "class Comment(models.Model):\n  content = models.CharField(max_length = 200)\n  comment_by = models.ForeignKey(User, on_delete = models.CASCADE)\n  post = models.ForeignKey(Post, on_delete = models.CASCADE)\n  created_at = models.DateTimeField(auto_now_add=True)\n  updated_at = models.DateTimeField(auto_now=True)\n  def ___str__(self):\n    return self.content\nclass PostUserLikes(models.Model):\n  user = models.ForeignKey(User, on_delete = models.CASCADE)   ",
+        "peekOfCode": "class Comment(models.Model):\n  content = models.CharField(max_length = 200)\n  comment_by = models.ForeignKey(User, on_delete = models.CASCADE)\n  post = models.ForeignKey(Post, on_delete = models.CASCADE)\n  created_at = models.DateTimeField(auto_now_add=True)\n  updated_at = models.DateTimeField(auto_now=True)\n  class Meta:\n     verbose_name = \"Commentaire\"\n  def ___str__(self):\n    return self.content",
         "detail": "src.blog.models",
         "documentation": {}
     },
@@ -796,7 +915,7 @@
         "kind": 6,
         "importPath": "src.blog.models",
         "description": "src.blog.models",
-        "peekOfCode": "class PostUserLikes(models.Model):\n  user = models.ForeignKey(User, on_delete = models.CASCADE)   \n  post = models.ForeignKey(Post, on_delete = models.CASCADE)\nclass PostTag(models.Model):\n\tpost = models.ForeignKey(Post, on_delete= models.CASCADE)\n\ttag = models.ForeignKey(Tag, on_delete = models.CASCADE)",
+        "peekOfCode": "class PostUserLikes(models.Model):\n  user = models.ForeignKey(User, on_delete = models.CASCADE)   \n  post = models.ForeignKey(Post, on_delete = models.CASCADE)\n  class Meta:\n     verbose_name = \"Like\"\nclass PostTag(models.Model):\n\tpost = models.ForeignKey(Post, on_delete= models.CASCADE)\n\ttag = models.ForeignKey(Tag, on_delete = models.CASCADE)",
         "detail": "src.blog.models",
         "documentation": {}
     },
@@ -832,7 +951,7 @@
         "kind": 5,
         "importPath": "src.blog.urls",
         "description": "src.blog.urls",
-        "peekOfCode": "app_name = 'blog'\nurlpatterns = [\n  path('', views.Posts.index, name = \"index\"),\n  path('posts/category/<int:category_id>', views.Posts.postsByCategory, name = \"PostsByCategory\"),\n  path('posts/tag/<int:tag_id>', views.Posts.postsByTag, name = \"PostsByTag\"),\n  path('post/<int:post_id>', views.Posts.show, name = \"show\"),\n  path('post/like/<int:post_id>', views.Posts.like, name = \"like\"),\n  path('post/new-post/', views.Posts.createPost, name=\"create-post\"),\n]",
+        "peekOfCode": "app_name = 'blog'\nurlpatterns = [\n  path('', views.Posts.index, name = \"index\"),\n  path('posts/category/<int:category_id>', views.Posts.postsByCategory, name = \"PostsByCategory\"),\n  path('posts/tag/<int:tag_id>', views.Posts.postsByTag, name = \"PostsByTag\"),\n  path('post/<int:post_id>', views.Posts.show, name = \"show\"),\n  path('post/like/<int:post_id>', views.Posts.like, name = \"like\"),\n  path('post/new-post/', views.Posts.createPost, name=\"create-post\"),\n  path('post/publish-post/<str:user_id>', views.Posts.publishPost, name=\"publish-post\"),\n]",
         "detail": "src.blog.urls",
         "documentation": {}
     },
@@ -841,7 +960,7 @@
         "kind": 5,
         "importPath": "src.blog.urls",
         "description": "src.blog.urls",
-        "peekOfCode": "urlpatterns = [\n  path('', views.Posts.index, name = \"index\"),\n  path('posts/category/<int:category_id>', views.Posts.postsByCategory, name = \"PostsByCategory\"),\n  path('posts/tag/<int:tag_id>', views.Posts.postsByTag, name = \"PostsByTag\"),\n  path('post/<int:post_id>', views.Posts.show, name = \"show\"),\n  path('post/like/<int:post_id>', views.Posts.like, name = \"like\"),\n  path('post/new-post/', views.Posts.createPost, name=\"create-post\"),\n]",
+        "peekOfCode": "urlpatterns = [\n  path('', views.Posts.index, name = \"index\"),\n  path('posts/category/<int:category_id>', views.Posts.postsByCategory, name = \"PostsByCategory\"),\n  path('posts/tag/<int:tag_id>', views.Posts.postsByTag, name = \"PostsByTag\"),\n  path('post/<int:post_id>', views.Posts.show, name = \"show\"),\n  path('post/like/<int:post_id>', views.Posts.like, name = \"like\"),\n  path('post/new-post/', views.Posts.createPost, name=\"create-post\"),\n  path('post/publish-post/<str:user_id>', views.Posts.publishPost, name=\"publish-post\"),\n]",
         "detail": "src.blog.urls",
         "documentation": {}
     },
@@ -850,7 +969,7 @@
         "kind": 6,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "class Posts:\n\tdef index(request):\n\t\tposts = Post.objects.all()\n\t\tpopularPosts = Post.objects.all().order_by(\"-nb_likes\", \"-updated_at\")[:5]\n\t\tcategories = Category.objects.all()\n\t\tpost_tag = PostTag.objects.all()\n\t\tcontext = {\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,",
+        "peekOfCode": "class Posts:\n\tdef index(request) -> (HttpResponse | HttpResponseRedirect):\n\t\tposts = Post.objects.all()\n\t\tpopularPosts = Post.objects.all().order_by(\"-nb_likes\", \"-updated_at\")[:5]\n\t\tcategories = Category.objects.all()\n\t\tpost_tag = PostTag.objects.all()\n\t\tcontext = {\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -931,7 +1050,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\t\t\tcontext['searchValue'] = searchValue\n\t\t\telse:\n\t\t\t\treturn redirect(\"blog:index\")\n\t\tposts = posts.order_by(\"-updated_at\")\n\t\tpaginator = Paginator(posts, 10)\n\t\tpage = request.GET.get('page')\n\t\tposts = paginator.get_page(page)\n\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id):",
+        "peekOfCode": "\t\t\t\tcontext['searchValue'] = searchValue\n\t\t\telse:\n\t\t\t\treturn redirect(\"blog:index\")\n\t\tposts = posts.order_by(\"-updated_at\")\n\t\tpaginator = Paginator(posts, 10)\n\t\tpage = request.GET.get('page')\n\t\tposts = paginator.get_page(page)\n\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id) -> HttpResponse:",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -940,7 +1059,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tposts = posts.order_by(\"-updated_at\")\n\t\tpaginator = Paginator(posts, 10)\n\t\tpage = request.GET.get('page')\n\t\tposts = paginator.get_page(page)\n\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id):\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tif request.method == \"POST\":\n\t\t\tform = request.POST",
+        "peekOfCode": "\t\tposts = posts.order_by(\"-updated_at\")\n\t\tpaginator = Paginator(posts, 10)\n\t\tpage = request.GET.get('page')\n\t\tposts = paginator.get_page(page)\n\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id) -> HttpResponse:\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tif request.method == \"POST\":\n\t\t\tform = request.POST",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -949,7 +1068,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tpaginator = Paginator(posts, 10)\n\t\tpage = request.GET.get('page')\n\t\tposts = paginator.get_page(page)\n\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id):\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tif request.method == \"POST\":\n\t\t\tform = request.POST\n\t\t\tcomment = form.get('comment')",
+        "peekOfCode": "\t\tpaginator = Paginator(posts, 10)\n\t\tpage = request.GET.get('page')\n\t\tposts = paginator.get_page(page)\n\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id) -> HttpResponse:\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tif request.method == \"POST\":\n\t\t\tform = request.POST\n\t\t\tcomment = form.get('comment')",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -958,7 +1077,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tpage = request.GET.get('page')\n\t\tposts = paginator.get_page(page)\n\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id):\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tif request.method == \"POST\":\n\t\t\tform = request.POST\n\t\t\tcomment = form.get('comment')\n\t\t\tif comment:",
+        "peekOfCode": "\t\tpage = request.GET.get('page')\n\t\tposts = paginator.get_page(page)\n\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id) -> HttpResponse:\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tif request.method == \"POST\":\n\t\t\tform = request.POST\n\t\t\tcomment = form.get('comment')\n\t\t\tif comment:",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -967,7 +1086,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tposts = paginator.get_page(page)\n\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id):\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tif request.method == \"POST\":\n\t\t\tform = request.POST\n\t\t\tcomment = form.get('comment')\n\t\t\tif comment:\n\t\t\t\tComment.objects.create(",
+        "peekOfCode": "\t\tposts = paginator.get_page(page)\n\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id) -> HttpResponse:\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tif request.method == \"POST\":\n\t\t\tform = request.POST\n\t\t\tcomment = form.get('comment')\n\t\t\tif comment:\n\t\t\t\tComment.objects.create(",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -976,7 +1095,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id):\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tif request.method == \"POST\":\n\t\t\tform = request.POST\n\t\t\tcomment = form.get('comment')\n\t\t\tif comment:\n\t\t\t\tComment.objects.create(\n\t\t\t\t\tcontent = comment,",
+        "peekOfCode": "\t\tcontext['posts'] = posts\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef show(request, post_id) -> HttpResponse:\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tif request.method == \"POST\":\n\t\t\tform = request.POST\n\t\t\tcomment = form.get('comment')\n\t\t\tif comment:\n\t\t\t\tComment.objects.create(\n\t\t\t\t\tcontent = comment,",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1039,7 +1158,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\t\t\tcomment = \"\"\n\t\tcomments = Comment.objects.all().filter(post__id = post_id).order_by('-created_at')\n\t\tpost_tag = PostTag.objects.all()\n\t\tcontext = {\n\t\t\t'post' : post,\n\t\t\t'tags' : post_tag,\n\t\t\t'comments' : comments,\n\t\t}\n\t\treturn render(request, 'blog/Posts/show.html', context)\n\tdef postsByCategory(request, category_id):",
+        "peekOfCode": "\t\t\t\tcomment = \"\"\n\t\tcomments = Comment.objects.all().filter(post__id = post_id).order_by('-created_at')\n\t\tpost_tag = PostTag.objects.all()\n\t\tcontext = {\n\t\t\t'post' : post,\n\t\t\t'tags' : post_tag,\n\t\t\t'comments' : comments,\n\t\t}\n\t\treturn render(request, 'blog/Posts/show.html', context)\n\tdef postsByCategory(request, category_id) -> HttpResponse:",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1048,7 +1167,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tcomments = Comment.objects.all().filter(post__id = post_id).order_by('-created_at')\n\t\tpost_tag = PostTag.objects.all()\n\t\tcontext = {\n\t\t\t'post' : post,\n\t\t\t'tags' : post_tag,\n\t\t\t'comments' : comments,\n\t\t}\n\t\treturn render(request, 'blog/Posts/show.html', context)\n\tdef postsByCategory(request, category_id):\n\t\tposts = Post.objects.filter(category__id = category_id).order_by(\"-updated_at\")",
+        "peekOfCode": "\t\tcomments = Comment.objects.all().filter(post__id = post_id).order_by('-created_at')\n\t\tpost_tag = PostTag.objects.all()\n\t\tcontext = {\n\t\t\t'post' : post,\n\t\t\t'tags' : post_tag,\n\t\t\t'comments' : comments,\n\t\t}\n\t\treturn render(request, 'blog/Posts/show.html', context)\n\tdef postsByCategory(request, category_id) -> HttpResponse:\n\t\tposts = Post.objects.filter(category__id = category_id).order_by(\"-updated_at\")",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1057,7 +1176,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tpost_tag = PostTag.objects.all()\n\t\tcontext = {\n\t\t\t'post' : post,\n\t\t\t'tags' : post_tag,\n\t\t\t'comments' : comments,\n\t\t}\n\t\treturn render(request, 'blog/Posts/show.html', context)\n\tdef postsByCategory(request, category_id):\n\t\tposts = Post.objects.filter(category__id = category_id).order_by(\"-updated_at\")\n\t\tpopularPosts = Post.objects.all().order_by(\"-nb_likes\", \"-updated_at\")[:5]",
+        "peekOfCode": "\t\tpost_tag = PostTag.objects.all()\n\t\tcontext = {\n\t\t\t'post' : post,\n\t\t\t'tags' : post_tag,\n\t\t\t'comments' : comments,\n\t\t}\n\t\treturn render(request, 'blog/Posts/show.html', context)\n\tdef postsByCategory(request, category_id) -> HttpResponse:\n\t\tposts = Post.objects.filter(category__id = category_id).order_by(\"-updated_at\")\n\t\tpopularPosts = Post.objects.all().order_by(\"-nb_likes\", \"-updated_at\")[:5]",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1066,7 +1185,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tcontext = {\n\t\t\t'post' : post,\n\t\t\t'tags' : post_tag,\n\t\t\t'comments' : comments,\n\t\t}\n\t\treturn render(request, 'blog/Posts/show.html', context)\n\tdef postsByCategory(request, category_id):\n\t\tposts = Post.objects.filter(category__id = category_id).order_by(\"-updated_at\")\n\t\tpopularPosts = Post.objects.all().order_by(\"-nb_likes\", \"-updated_at\")[:5]\n\t\tcategories = Category.objects.all()",
+        "peekOfCode": "\t\tcontext = {\n\t\t\t'post' : post,\n\t\t\t'tags' : post_tag,\n\t\t\t'comments' : comments,\n\t\t}\n\t\treturn render(request, 'blog/Posts/show.html', context)\n\tdef postsByCategory(request, category_id) -> HttpResponse:\n\t\tposts = Post.objects.filter(category__id = category_id).order_by(\"-updated_at\")\n\t\tpopularPosts = Post.objects.all().order_by(\"-nb_likes\", \"-updated_at\")[:5]\n\t\tcategories = Category.objects.all()",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1129,7 +1248,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tposts = paginator.get_page(page)\n\t\tcontext = {\n\t\t\t'filterActive': category_id,\n\t\t\t'posts': posts,\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,\n\t\t}\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef postsByTag(request, tag_id):",
+        "peekOfCode": "\t\tposts = paginator.get_page(page)\n\t\tcontext = {\n\t\t\t'filterActive': category_id,\n\t\t\t'posts': posts,\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,\n\t\t}\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef postsByTag(request, tag_id) -> HttpResponse:",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1138,7 +1257,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tcontext = {\n\t\t\t'filterActive': category_id,\n\t\t\t'posts': posts,\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,\n\t\t}\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef postsByTag(request, tag_id):\n\t\tposts = Post.objects.filter(tag__id = tag_id).order_by(\"-updated_at\")",
+        "peekOfCode": "\t\tcontext = {\n\t\t\t'filterActive': category_id,\n\t\t\t'posts': posts,\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,\n\t\t}\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef postsByTag(request, tag_id) -> HttpResponse:\n\t\tposts = Post.objects.filter(tag__id = tag_id).order_by(\"-updated_at\")",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1192,7 +1311,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tpage = request.GET.get('page')\n\t\tposts = paginator.get_page(page)\n\t\tcontext = {\n\t\t\t'posts': posts,\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,\n\t\t}\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef like(request, post_id):",
+        "peekOfCode": "\t\tpage = request.GET.get('page')\n\t\tposts = paginator.get_page(page)\n\t\tcontext = {\n\t\t\t'posts': posts,\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,\n\t\t}\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef like(request, post_id) -> HttpResponseRedirect:",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1201,7 +1320,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tposts = paginator.get_page(page)\n\t\tcontext = {\n\t\t\t'posts': posts,\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,\n\t\t}\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef like(request, post_id):\n\t\tpost = get_object_or_404(Post, pk = post_id)",
+        "peekOfCode": "\t\tposts = paginator.get_page(page)\n\t\tcontext = {\n\t\t\t'posts': posts,\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,\n\t\t}\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef like(request, post_id) -> HttpResponseRedirect:\n\t\tpost = get_object_or_404(Post, pk = post_id)",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1210,7 +1329,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tcontext = {\n\t\t\t'posts': posts,\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,\n\t\t}\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef like(request, post_id):\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tpost.nb_likes = post.nb_likes + 1",
+        "peekOfCode": "\t\tcontext = {\n\t\t\t'posts': posts,\n\t\t\t'post_tag': post_tag,\n\t\t\t'categories': categories,\n\t\t\t'popularPosts': popularPosts,\n\t\t}\n\t\treturn render(request, 'blog/Posts/index.html', context)\n\tdef like(request, post_id) -> HttpResponseRedirect:\n\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tpost.nb_likes = post.nb_likes + 1",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1219,7 +1338,7 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tpost.nb_likes = post.nb_likes + 1\n\t\tpost.save()\n\t\treturn redirect('blog:show', post_id=post_id)\n\tdef createPost(request):\n\t\tpass",
+        "peekOfCode": "\t\tpost = get_object_or_404(Post, pk = post_id)\n\t\tpost.nb_likes = post.nb_likes + 1\n\t\tpost.save()\n\t\treturn redirect('blog:show', post_id=post_id)\n\tdef createPost(request) -> HttpResponse:\n\t\tcontext = {\n\t\t\t\"form\": PostForm(),\n\t\t}\n\t\treturn render(request, \"blog/Posts/write.html\", context)\n\tdef publishPost(request, user_id) -> HttpResponseRedirect:",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1228,7 +1347,70 @@
         "kind": 5,
         "importPath": "src.blog.views",
         "description": "src.blog.views",
-        "peekOfCode": "\t\tpost.nb_likes = post.nb_likes + 1\n\t\tpost.save()\n\t\treturn redirect('blog:show', post_id=post_id)\n\tdef createPost(request):\n\t\tpass",
+        "peekOfCode": "\t\tpost.nb_likes = post.nb_likes + 1\n\t\tpost.save()\n\t\treturn redirect('blog:show', post_id=post_id)\n\tdef createPost(request) -> HttpResponse:\n\t\tcontext = {\n\t\t\t\"form\": PostForm(),\n\t\t}\n\t\treturn render(request, \"blog/Posts/write.html\", context)\n\tdef publishPost(request, user_id) -> HttpResponseRedirect:\n\t\tif request.method == \"POST\":",
+        "detail": "src.blog.views",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tcontext",
+        "kind": 5,
+        "importPath": "src.blog.views",
+        "description": "src.blog.views",
+        "peekOfCode": "\t\tcontext = {\n\t\t\t\"form\": PostForm(),\n\t\t}\n\t\treturn render(request, \"blog/Posts/write.html\", context)\n\tdef publishPost(request, user_id) -> HttpResponseRedirect:\n\t\tif request.method == \"POST\":\n\t\t\tform = request.POST\n\t\t\tcategory = Category.objects.get(id = form.get('category'))\n\t\t\tuser = User.objects.get(id = user_id)\n\t\t\tpost_title = form.get('title')",
+        "detail": "src.blog.views",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tform",
+        "kind": 5,
+        "importPath": "src.blog.views",
+        "description": "src.blog.views",
+        "peekOfCode": "\t\t\tform = request.POST\n\t\t\tcategory = Category.objects.get(id = form.get('category'))\n\t\t\tuser = User.objects.get(id = user_id)\n\t\t\tpost_title = form.get('title')\n\t\t\tpost_content = form.get('content')\n\t\t\tif form:\n\t\t\t\tPost.objects.create(\n\t\t\t\t\ttitle = post_title,\n      \t\t\t\tslug = slugify(post_title),\n      \t\t\t\tcontent = post_content,",
+        "detail": "src.blog.views",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tcategory",
+        "kind": 5,
+        "importPath": "src.blog.views",
+        "description": "src.blog.views",
+        "peekOfCode": "\t\t\tcategory = Category.objects.get(id = form.get('category'))\n\t\t\tuser = User.objects.get(id = user_id)\n\t\t\tpost_title = form.get('title')\n\t\t\tpost_content = form.get('content')\n\t\t\tif form:\n\t\t\t\tPost.objects.create(\n\t\t\t\t\ttitle = post_title,\n      \t\t\t\tslug = slugify(post_title),\n      \t\t\t\tcontent = post_content,\n      \t\t\t\texcerpt = f\"{post_content[0:30]}...\",",
+        "detail": "src.blog.views",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tuser",
+        "kind": 5,
+        "importPath": "src.blog.views",
+        "description": "src.blog.views",
+        "peekOfCode": "\t\t\tuser = User.objects.get(id = user_id)\n\t\t\tpost_title = form.get('title')\n\t\t\tpost_content = form.get('content')\n\t\t\tif form:\n\t\t\t\tPost.objects.create(\n\t\t\t\t\ttitle = post_title,\n      \t\t\t\tslug = slugify(post_title),\n      \t\t\t\tcontent = post_content,\n      \t\t\t\texcerpt = f\"{post_content[0:30]}...\",\n      \t\t\t\tthumbnail = form.get('thumbnail'),",
+        "detail": "src.blog.views",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tpost_title",
+        "kind": 5,
+        "importPath": "src.blog.views",
+        "description": "src.blog.views",
+        "peekOfCode": "\t\t\tpost_title = form.get('title')\n\t\t\tpost_content = form.get('content')\n\t\t\tif form:\n\t\t\t\tPost.objects.create(\n\t\t\t\t\ttitle = post_title,\n      \t\t\t\tslug = slugify(post_title),\n      \t\t\t\tcontent = post_content,\n      \t\t\t\texcerpt = f\"{post_content[0:30]}...\",\n      \t\t\t\tthumbnail = form.get('thumbnail'),\n      \t\t\t\tcategory = category,",
+        "detail": "src.blog.views",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tpost_content",
+        "kind": 5,
+        "importPath": "src.blog.views",
+        "description": "src.blog.views",
+        "peekOfCode": "\t\t\tpost_content = form.get('content')\n\t\t\tif form:\n\t\t\t\tPost.objects.create(\n\t\t\t\t\ttitle = post_title,\n      \t\t\t\tslug = slugify(post_title),\n      \t\t\t\tcontent = post_content,\n      \t\t\t\texcerpt = f\"{post_content[0:30]}...\",\n      \t\t\t\tthumbnail = form.get('thumbnail'),\n      \t\t\t\tcategory = category,\n      \t\t\t\tnb_likes = 0,",
+        "detail": "src.blog.views",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\t\t\ttitle",
+        "kind": 5,
+        "importPath": "src.blog.views",
+        "description": "src.blog.views",
+        "peekOfCode": "\t\t\t\t\ttitle = post_title,\n      \t\t\t\tslug = slugify(post_title),\n      \t\t\t\tcontent = post_content,\n      \t\t\t\texcerpt = f\"{post_content[0:30]}...\",\n      \t\t\t\tthumbnail = form.get('thumbnail'),\n      \t\t\t\tcategory = category,\n      \t\t\t\tnb_likes = 0,\n      \t\t\t\twrited_by = user,\n\t\t\t\t)\n\t\treturn redirect(\"account:index\")",
         "detail": "src.blog.views",
         "documentation": {}
     },
@@ -1462,7 +1644,7 @@
         "kind": 5,
         "importPath": "src.theblog.urls",
         "description": "src.theblog.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('blog/', include('blog.urls')),\n    path('account/', include('account.urls')),\n    path('database/<int:option>/seed/', seeders.seed_with_option),\n  path('database/seed/', seeders.seed)\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('blog/', include('blog.urls')),\n    path('account/', include('account.urls')),\n    path('database/<int:option>/seed/', seeders.seed_with_option),\n    path('database/seed/', seeders.seed),\n]",
         "detail": "src.theblog.urls",
         "documentation": {}
     },

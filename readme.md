@@ -63,7 +63,7 @@ Blog website with django framework
 [x] Commenter un post  
 [] Répondre à un commentaire  
 [] Aimer un post  
-[] Création post  
+[x] Création post  
 [] Suppression post  
 [] Mise à jour post  
 [x] Associer des tags et une category à un post
